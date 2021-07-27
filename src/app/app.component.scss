@@ -1,0 +1,22 @@
+.app-container {
+  min-height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  .page-header > * {
+    width: 100%;
+  }
+
+  .content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .page-footer & > * {
+    width: 100%;
+  }
+}

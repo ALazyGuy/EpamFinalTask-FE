@@ -1,0 +1,34 @@
+<mat-card class="course-item"
+  appCreationDateStatus
+  [creationDateString]="course.date"
+  [ngClass]="{ 'course-item--top-rated': course.isTopRated }">
+  <section class="course-item__content">
+    <header class="card-header">
+      <h2 class="card-header__title">
+        <span>{{course.name | uppercase}}</span>
+        <mat-icon *ngIf="course.isTopRated">star_rate</mat-icon>
+      </h2>
+      <div class="card-header__info">
+        <div class="card-header__info__duration">
+          {{course.length | minutesToTime}}
+        </div>
+        <div class="card-header__info__date">
+          {{course.date | date : 'MM.dd.yyyy'}}
+        </div>
+      </div>
+    </header>
+    <main class="course-item__content__desctiption">
+      {{course.description}}
+    </main>
+  </section>
+  <aside class="course-item__actions">
+    <button class="course-item__actions__edit" mat-button color="primary" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+      <span translate>Edit</span>
+    </button>
+    <button class="course-item__actions__remove" mat-button color="warn" (click)="onRemove()">
+      <mat-icon>remove</mat-icon>
+      <span translate>Delete</span>
+    </button>
+  </aside>
+</mat-card>

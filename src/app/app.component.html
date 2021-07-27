@@ -1,0 +1,21 @@
+<perfect-scrollbar>
+  <div class="app-container">
+    <header class="page-header">
+      <app-header></app-header>
+    </header>
+
+    <section class="page-breadcrumbs" *ngIf="isAuthenticated$ | async">
+      <app-breadcrumbs></app-breadcrumbs>
+    </section>
+
+    <main class="content-container">
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="page-header">
+      <app-footer></app-footer>
+    </footer>
+  </div>
+</perfect-scrollbar>
+
+<app-loading-spinner *ngIf="isLoading$ | async"></app-loading-spinner>

@@ -1,0 +1,32 @@
+<section class="course-toolbar">
+  <div class="course-toolbar__search">
+    <mat-form-field>
+      <input matInput [formControl]="searchInput" name="searchCriteria" placeholder="{{ 'Search сourses' | translate }}">
+    </mat-form-field>
+  </div>
+
+  <div class="course-toolbar__add-course">
+    <button mat-raised-button routerLink="new">
+      <mat-icon>add</mat-icon>
+      <span translate>Add course</span>
+    </button>
+  </div>
+</section>
+
+<ng-container *ngIf="courses$ | async as courses; else noData">
+  <section class="course-list" *ngIf="courses.length; else noData">
+    <app-course-item
+      *ngFor="let course of courses | orderBy:'creationDate'"
+      [course]="course"
+      (edit)="editCourse($event)"
+      (remove)="removeCourse($event)">
+    </app-course-item>
+    <button class="course-list__load-more" mat-raised-button *ngIf="hasMoreCourses$ | async" (click)="loadMoreCourses()">
+      <span translate>Load more</span>
+    </button>
+  </section>
+</ng-container>
+
+<ng-template #noData>
+  <div class="no-data" translate="No Courses"></div>
+</ng-template>

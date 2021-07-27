@@ -1,0 +1,28 @@
+header {
+  height: 135px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .app-controls {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 100px;
+      height: 100px;
+    }
+
+    .lang-dropdown {
+      margin-left: 25px;
+    }
+  }
+
+  .user-controls {
+    padding: 0 30px;
+
+    &__info {
+      padding: 0 15px;
+    }
+  }
+}

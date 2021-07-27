@@ -1,0 +1,40 @@
+<mat-card>
+  <form autocomplete="off" [formGroup]="courseForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="{{ 'Title' | translate }}" name="title">
+      <mat-error *ngIf="courseForm.controls['name'].hasError('required')">
+        <span translate>Please enter a course title</span>
+      </mat-error>
+      <mat-error *ngIf="courseForm.controls['name'].hasError('maxlength')">
+        <span translate>Course title is loo long</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="description" placeholder="{{ 'Description' | translate }}" name="description"></textarea>
+      <mat-error *ngIf="courseForm.controls['description'].hasError('required')">
+        <span translate>Please enter a course description</span>
+      </mat-error>
+      <mat-error *ngIf="courseForm.controls['description'].hasError('maxlength')">
+        <span translate>Course description is loo long</span>
+      </mat-error>
+    </mat-form-field>
+    <app-course-date-input
+      formControlName="date"
+      [errorMatcher]="createCustomErrorStateMatcher('date')"></app-course-date-input>
+    <app-course-duration-input
+      formControlName="length"
+      [errorMatcher]="createCustomErrorStateMatcher('length')"></app-course-duration-input>
+    <app-course-authors-input
+      formControlName="authors"
+      [suggestedAuthors]="suggestedAuthors"
+      [errorMatcher]="createCustomErrorStateMatcher('authors')"></app-course-authors-input>
+    <div class="form-actions">
+      <button type="submit" mat-raised-button [disabled]="courseForm.invalid">
+        <span translate>Save</span>
+      </button>
+      <button type="button" color="warn" mat-raised-button (click)="onCancel(); $event.preventDefault()">
+        <span translate>Cancel</span>
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,33 @@
+<header>
+  <div class="app-controls">
+    <a class="logo" [routerLink]="['/']">
+      <app-logo></app-logo>
+    </a>
+
+    <mat-form-field class="lang-dropdown">
+      <mat-select placeholder="{{ 'Choose language' | translate }}" [formControl]="langFormControl" (selectionChange)="changeLang($event.value)">
+        <mat-option value="en">
+          <span translate>English</span>
+        </mat-option>
+        <mat-option value="ru">
+          <span translate>Russian</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="user-controls">
+    <ng-container *ngIf="user$ | async as user; else noUser">
+      <span class="user-controls__info">{{ user.name?.first }} {{ user.name?.last }}</span>
+      <button mat-raised-button (click)="logout()">
+        <span translate>Log Off</span>
+      </button>
+    </ng-container>
+    <ng-template #noUser>
+      <span class="user-controls__info" translate>User login</span>
+      <button mat-raised-button (click)="login()">
+        <span translate>Log In</span>
+      </button>
+    </ng-template>
+  </div>
+</header>

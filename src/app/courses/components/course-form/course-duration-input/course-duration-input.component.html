@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+  <mat-form-field class="input-small">
+    <input
+      matInput
+      (blur)="onTouched()"
+      [errorStateMatcher]="errorMatcher"
+      formControlName="length"
+      placeholder="{{ 'Duration' | translate }}"
+      name="duration">
+      <mat-error *ngIf="errorMatcher.hasError('required')">
+        <span translate>Please enter a duration</span>
+      </mat-error>
+      <mat-error *ngIf="errorMatcher.hasError('notInteger')">
+        <span translate>Duration value is invalid</span>
+      </mat-error>
+  </mat-form-field>
+  <span class="converted-duration" *ngIf="form.value.length">{{ form.value.length | minutesToTime }}</span>
+</div>

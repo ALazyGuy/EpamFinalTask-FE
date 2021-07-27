@@ -1,0 +1,9 @@
+.breadcrumbs {
+  &__item * {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+    margin: 0 5px;
+  }
+}
