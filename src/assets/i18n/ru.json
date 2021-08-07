@@ -1,5 +1,5 @@
 {
-  "Copyright © Videocourses. All Rights Reserved": "© Videocourses. Все права защищены",
+  "Copyright © Interpol. All Rights Reserved": "© Interpol. Все права защищены",
   "English": "Английский",
   "Russian": "Русский",
   "German": "Немецкий",
@@ -39,5 +39,12 @@
   "Cash": "Счет",
   "Name": "Имя",
   "Surname": "Фамилия",
-  "Middle name": "Отчество"
+  "Middle name": "Отчество",
+  "Please enter name": "Пожалуйста введите имя",
+  "Please enter surname": "Пожалуйста введите фамилию",
+  "Please enter middle name": "Пожалуйста введите отчество",
+  "Please enter email": "Пожалуйста введите email",
+  "Please enter password": "Пожалуйста введите пароль",
+  "Please enter password confirmation": "Пожалуйста подтвердите пароль",
+  "Passwords are not matched": "Пароли не совпадают"
 }

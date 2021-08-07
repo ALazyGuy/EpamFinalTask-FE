@@ -4,8 +4,16 @@ import { Store, select } from '@ngrx/store';
 
 import { AuthState } from 'src/app/auth/reducers/auth.reducer';
 import { loginErrorMessage } from './../../../auth/reducers/auth.reducer';
-import { ClearLoginErrorAction, RegistrationAction } from 'src/app/auth/actions/auth.actions';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  ClearLoginErrorAction,
+  RegistrationAction,
+} from 'src/app/auth/actions/auth.actions';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registration-page',
@@ -25,12 +33,19 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
       middleName: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', [Validators.required, this.validatePassword.bind(this)]],
     });
   }
 
   ngOnDestroy() {
     this.store.dispatch(new ClearLoginErrorAction());
+  }
+
+  validatePassword(c: FormControl) {
+    return !this.registrationForm || !this.registrationForm.value.password ||
+      this.registrationForm.value.password === c.value
+      ? null
+      : { passwordMismatch: true };
   }
 
   performRegistration() {

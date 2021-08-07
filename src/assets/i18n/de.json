@@ -1,5 +1,5 @@
 {
-  "Copyright © Videocourses. All Rights Reserved": "© Videokurse. Alle Rechte vorbehalten",
+  "Copyright © Interpol. All Rights Reserved": "© Interpol. Alle Rechte vorbehalten",
   "English": "Englisch",
   "Russian": "Russisch",
   "German": "Deutsche",
@@ -39,5 +39,12 @@
   "Cash": "Kasse",
   "Name": "Name",
   "Surname": "Nachname",
-  "Middle name": "Zweiter Vorname"
+  "Middle name": "Zweiter Vorname",
+  "Please enter name": "Bitte Namen eingeben",
+  "Please enter surname": "Bitte Nachnamen eingeben",
+  "Please enter middle name": "Bitte zweiten Vornamen eingeben",
+  "Please enter email": "Bitte E-Mail eingeben",
+  "Please enter password": "Bitte Passwort eingeben",
+  "Please enter password confirmation": "Bitte Passwortbestätigung eingeben",
+  "Passwords are not matched": "Passwörter stimmen nicht überein"
 }

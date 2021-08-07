@@ -3,21 +3,42 @@
   <form autocomplete="off" [formGroup]="registrationForm" (submit)="registrationForm.valid && performRegistration()">
     <mat-form-field>
       <input matInput formControlName="name" placeholder="{{ 'Name' | translate }}" name="name">
+      <mat-error *ngIf="registrationForm.controls['name'].hasError('required')">
+        <span translate>Please enter name</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput formControlName="surname" placeholder="{{ 'Surname' | translate }}" name="surname">
+      <mat-error *ngIf="registrationForm.controls['surname'].hasError('required')">
+        <span translate>Please enter surname</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput formControlName="middleName" placeholder="{{ 'Middle name' | translate }}" name="middleName">
+      <mat-error *ngIf="registrationForm.controls['middleName'].hasError('required')">
+        <span translate>Please enter middle name</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput formControlName="email" placeholder="{{ 'Email' | translate }}" name="email">
+      <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+        <span translate>Please enter email</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input type="password" matInput formControlName="password" placeholder="{{ 'Password' | translate }}" name="password">
+      <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+        <span translate>Please enter password</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input type="password" matInput formControlName="confirmPassword" placeholder="{{ 'Confirm password' | translate }}" name="confirmPassword">
+      <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">
+        <span translate>Please enter password confirmation</span>
+      </mat-error>
+      <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('passwordMismatch')">
+        <span translate>Passwords are not matched</span>
+      </mat-error>
     </mat-form-field>
     <button type="submit" mat-raised-button>
       <span translate>Login</span>

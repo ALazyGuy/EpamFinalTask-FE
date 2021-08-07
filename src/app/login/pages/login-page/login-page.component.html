@@ -3,9 +3,15 @@
   <form autocomplete="off" [formGroup]="loginForm" (submit)="loginForm.valid && login()">
     <mat-form-field>
       <input matInput formControlName="email" placeholder="{{ 'Email' | translate }}" name="email">
+      <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+        <span translate>Please enter email</span>
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <input type="password" matInput formControlName="password" placeholder="{{ 'Password' | translate }}" name="password">
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        <span translate>Please enter password</span>
+      </mat-error>
     </mat-form-field>
     <button type="submit" mat-raised-button>
       <span translate>Login</span>
