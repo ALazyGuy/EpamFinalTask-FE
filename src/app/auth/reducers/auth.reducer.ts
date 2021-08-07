@@ -1,8 +1,8 @@
+import { CLEAR_LOGIN_ERROR, REGISTRATION_FAIL_ACTION } from './../actions/auth.actions';
 import { User } from '../models/user';
 import {
   SET_IS_AUTHENTICATED_ACTION,
   SET_USER_ACTION,
-  LOG_IN_SUCCESS_ACTION,
   LOG_IN_FAIL_ACTION,
   AuthAction
 } from '../actions/auth.actions';
@@ -36,18 +36,19 @@ export function reducer(state = initialState, action: AuthAction) {
       };
     }
 
-    case LOG_IN_SUCCESS_ACTION: {
-      return {
-        ...state,
-        loginErrorMessage: null
-      };
-    }
-
+    case REGISTRATION_FAIL_ACTION:
     case LOG_IN_FAIL_ACTION: {
       return {
         ...state,
         loginErrorMessage: action.payload.message
       };
+    }
+
+    case CLEAR_LOGIN_ERROR: {
+      return {
+        ...state,
+        loginErrorMessage: null
+      }
     }
 
     default: {

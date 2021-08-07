@@ -13,6 +13,10 @@ import {
   LogInSuccessAction,
   SetIsAuthenticatedAction,
   SetUserAction,
+  REGISTRATION_ACTION,
+  RegistrationSuccessAction,
+  RegistrationFailAction,
+  REGISTRATION_SUCCESS_ACTION,
 } from '../actions/auth.actions';
 import { Router } from '@angular/router';
 
@@ -23,7 +27,7 @@ export class AuthEffects {
     ofType(LOG_IN_ACTION),
     pluck('payload'),
     switchMap(
-      ({ login, password }) => this.authService.login(login, password)
+      ({ email, password }) => this.authService.login(email, password)
         .pipe(
           map(({ token }) => new LogInSuccessAction(token)),
           catchError((error) => of(new LogInFailAction({
@@ -35,8 +39,21 @@ export class AuthEffects {
   );
 
   @Effect()
+  public registration$: Observable<RegistrationSuccessAction | RegistrationFailAction> = this.actions$.pipe(
+    ofType(REGISTRATION_ACTION),
+    pluck('payload'),
+    switchMap(
+      user => this.authService.register(user)
+        .pipe(
+          map(({ token }) => new RegistrationSuccessAction(token)),
+          catchError((error) => of(new RegistrationFailAction(error)))
+        )
+    )
+  );
+
+  @Effect()
   public logInSuccess$: Observable<SetIsAuthenticatedAction | SetUserAction> = this.actions$.pipe(
-    ofType(LOG_IN_SUCCESS_ACTION),
+    ofType(LOG_IN_SUCCESS_ACTION, REGISTRATION_SUCCESS_ACTION),
     pluck('payload'),
     tap((token) => localStorage.accessToken = JSON.stringify(token)),
     switchMap(
@@ -60,7 +77,7 @@ export class AuthEffects {
     ofType(LOG_OUT_ACTION),
     tap(() => {
       localStorage.removeItem('accessToken');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     }),
     switchMap(() => [
       new SetIsAuthenticatedAction(false),

@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule.forChild(routes),
     TranslateModule.forChild({})
   ],
-  declarations: [LoginPageComponent]
+  declarations: [LoginPageComponent, RegistrationPageComponent]
 })
 export class LoginModule { }

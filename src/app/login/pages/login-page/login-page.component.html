@@ -2,7 +2,7 @@
   <h2 translate>Login</h2>
   <form autocomplete="off" [formGroup]="loginForm" (submit)="loginForm.valid && login()">
     <mat-form-field>
-      <input matInput formControlName="login" placeholder="{{ 'Username' | translate }}" name="userName">
+      <input matInput formControlName="email" placeholder="{{ 'Email' | translate }}" name="email">
     </mat-form-field>
     <mat-form-field>
       <input type="password" matInput formControlName="password" placeholder="{{ 'Password' | translate }}" name="password">

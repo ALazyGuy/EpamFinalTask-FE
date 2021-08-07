@@ -1,7 +1,8 @@
 export interface User {
   id: number;
-  name?: {
-    first: string;
-    last: string;
-  };
+  email: string;
+  name: string;
+  surname: string;
+  middleName: string;
+  cash: number;
 }

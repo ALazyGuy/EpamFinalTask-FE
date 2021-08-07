@@ -2,13 +2,16 @@
   "Copyright © Videocourses. All Rights Reserved": "© Videocourses. Все права защищены",
   "English": "Английский",
   "Russian": "Русский",
+  "German": "Немецкий",
   "Choose language": "Выберите язык",
   "User login": "Пользовательский вход",
   "Log In": "Войти",
+  "Registration": "Регистрация",
   "Login": "Войти",
-  "Log Off": "Выйти",
+  "Log out": "Выйти",
   "Username": "Имя пользователя",
   "Password": "Пароль",
+  "Confirm password": "Подтверждение пароля",
   "Incorrect username or password": "Неверное имя пользователя или пароль",
   "Courses": "Курсы",
   "Create": "Создать",
@@ -32,5 +35,9 @@
   "Please select date": "Пожалуйста выберите дату",
   "Please enter a duration": "Пожалуйста введите продолжительность",
   "Duration value is invalid": "Продолжительность введена неверно",
-  "Please select at least one author": "Пожалуйста выберите хотя бы одного автора"
+  "Please select at least one author": "Пожалуйста выберите хотя бы одного автора",
+  "Cash": "Счет",
+  "Name": "Имя",
+  "Surname": "Фамилия",
+  "Middle name": "Отчество"
 }

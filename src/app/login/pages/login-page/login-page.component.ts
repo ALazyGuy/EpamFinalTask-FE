@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
 
 import { AuthState } from 'src/app/auth/reducers/auth.reducer';
 import { loginErrorMessage } from './../../../auth/reducers/auth.reducer';
-import { LogInAction } from 'src/app/auth/actions/auth.actions';
+import { ClearLoginErrorAction, LogInAction } from 'src/app/auth/actions/auth.actions';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   errorMessage$ = this.store.pipe(select(loginErrorMessage));
 
@@ -20,9 +20,13 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      login: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(new ClearLoginErrorAction());
   }
 
   login() {

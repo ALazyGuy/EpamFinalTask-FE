@@ -15,7 +15,7 @@ const routes: Route[] = [
     },
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },

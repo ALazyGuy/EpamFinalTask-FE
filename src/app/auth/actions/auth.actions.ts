@@ -6,13 +6,20 @@ export const LOG_IN_ACTION = '[Auth] Log In';
 export const LOG_OUT_ACTION = '[Auth] Log Out';
 export const LOG_IN_SUCCESS_ACTION = '[Auth] Log In Success';
 export const LOG_IN_FAIL_ACTION = '[Auth] Log In Fail';
+
+export const REGISTRATION_ACTION = '[Auth] Registration';
+export const REGISTRATION_SUCCESS_ACTION = '[Auth] Registration Success';
+export const REGISTRATION_FAIL_ACTION = '[Auth] Registration Fail';
+
 export const SET_IS_AUTHENTICATED_ACTION = '[Auth] Set Is Authenticated';
 export const SET_USER_ACTION = '[Auth] Set User';
+
+export const CLEAR_LOGIN_ERROR = '[Auth] Clear Login Error';
 
 export class LogInAction implements Action {
   public readonly type = LOG_IN_ACTION;
 
-  constructor(public payload: { login: string, password: string }) {}
+  constructor(public payload: { email: string, password: string }) {}
 }
 
 export class LogOutAction implements Action {
@@ -31,6 +38,24 @@ export class LogInFailAction implements Action {
   constructor(public payload: HttpErrorResponse) {}
 }
 
+export class RegistrationAction implements Action {
+  public readonly type = REGISTRATION_ACTION;
+
+  constructor(public payload: User) {}
+}
+
+export class RegistrationSuccessAction implements Action {
+  public readonly type = REGISTRATION_SUCCESS_ACTION;
+
+  constructor(public payload: string) {}
+}
+
+export class RegistrationFailAction implements Action {
+  public readonly type = REGISTRATION_FAIL_ACTION;
+
+  constructor(public payload: HttpErrorResponse) {}
+}
+
 export class SetIsAuthenticatedAction implements Action {
   public readonly type = SET_IS_AUTHENTICATED_ACTION;
 
@@ -43,10 +68,18 @@ export class SetUserAction implements Action {
   constructor(public payload: User | null) {}
 }
 
+export class ClearLoginErrorAction implements Action {
+  public readonly type = CLEAR_LOGIN_ERROR;
+}
+
 export type AuthAction =
   | LogInAction
   | LogOutAction
   | LogInSuccessAction
   | LogInFailAction
+  | RegistrationAction
+  | RegistrationSuccessAction
+  | RegistrationFailAction
   | SetIsAuthenticatedAction
-  | SetUserAction;
+  | SetUserAction
+  | ClearLoginErrorAction;

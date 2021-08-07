@@ -1,0 +1,27 @@
+<mat-card>
+  <h2 translate>Registration</h2>
+  <form autocomplete="off" [formGroup]="registrationForm" (submit)="registrationForm.valid && performRegistration()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="{{ 'Name' | translate }}" name="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="surname" placeholder="{{ 'Surname' | translate }}" name="surname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="middleName" placeholder="{{ 'Middle name' | translate }}" name="middleName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="{{ 'Email' | translate }}" name="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput formControlName="password" placeholder="{{ 'Password' | translate }}" name="password">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput formControlName="confirmPassword" placeholder="{{ 'Confirm password' | translate }}" name="confirmPassword">
+    </mat-form-field>
+    <button type="submit" mat-raised-button>
+      <span translate>Login</span>
+    </button>
+  </form>
+  <p class="error-message" translate>{{ errorMessage$ | async }}</p>
+</mat-card>
