@@ -5,13 +5,13 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 
 const routes: Route[] = [
   {
-    path: 'courses',
+    path: 'people',
     loadChildren: () =>
-      import('./courses/courses.module').then((m) => m.CoursesModule),
+      import('./people/people.module').then((m) => m.PeopleModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard],
     data: {
-      breadcrumb: { name: 'Courses', url: '/courses' },
+      breadcrumb: { name: 'People', url: '/people' },
     },
   },
   {
@@ -20,7 +20,7 @@ const routes: Route[] = [
       import('./login/login.module').then((m) => m.LoginModule),
   },
 
-  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: '', redirectTo: 'people', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];
 
