@@ -27,7 +27,6 @@ import { PeopleService } from './services/people.service';
 import { EditPersonPageComponent } from './pages/edit-person-page/edit-person-page.component';
 import { CreatePersonPageComponent } from './pages/create-person-page/create-person-page.component';
 import { PersonResolver } from './resolvers/person-resolver.service';
-import { AuthorsResolver } from './resolvers/authors.resolver';
 
 import { reducer } from './reducers/people.reducer';
 import { PeopleEffects } from './effects/people.effects';
@@ -68,7 +67,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     CreatePersonPageComponent,
     PersonCashInputComponent,
   ],
-  providers: [PeopleService, PersonResolver, AuthorsResolver, FilterByPipe],
+  providers: [PeopleService, PersonResolver, FilterByPipe],
   entryComponents: [ConfirmationDialogComponent],
 })
 export class PeopleModule {}

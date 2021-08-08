@@ -3,10 +3,10 @@
     <mat-form-field>
       <input matInput formControlName="fullName" placeholder="{{ 'Full name' | translate }}" name="title">
       <mat-error *ngIf="personForm.controls['fullName'].hasError('required')">
-        <span translate>Please enter a course title</span>
+        <span translate>Please enter a full name</span>
       </mat-error>
       <mat-error *ngIf="personForm.controls['fullName'].hasError('maxlength')">
-        <span translate>Course title is loo long</span>
+        <span translate>Full name is loo long</span>
       </mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -18,9 +18,9 @@
         <span translate>Photo name is loo long</span>
       </mat-error>
     </mat-form-field>
-    <app-course-duration-input
+    <app-person-cash-input
       formControlName="cash"
-      [errorMatcher]="createCustomErrorStateMatcher('cash')"></app-course-duration-input>
+      [errorMatcher]="createCustomErrorStateMatcher('cash')"></app-person-cash-input>
     <mat-slide-toggle formControlName="status">Is wanted</mat-slide-toggle>
     <div class="form-actions">
       <button type="submit" mat-raised-button [disabled]="personForm.invalid">

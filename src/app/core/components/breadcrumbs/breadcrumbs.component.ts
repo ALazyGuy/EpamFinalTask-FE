@@ -22,8 +22,8 @@ export class BreadcrumbsComponent implements OnInit {
         this.segments = new Set<BreadcrumbsSegment>();
 
         while (currentRoute && currentRoute.data && currentRoute.data.breadcrumb) {
-          const newSegment = currentRoute.data.course
-            ? { name: currentRoute.data.course.name }
+          const newSegment = currentRoute.data.person
+            ? { name: currentRoute.data.person.fullName }
             : currentRoute.data.breadcrumb;
           this.segments.add(newSegment);
           currentRoute = currentRoute.firstChild;

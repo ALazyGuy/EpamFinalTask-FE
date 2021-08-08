@@ -1,6 +1,6 @@
-<mat-card class="course-item"
-  [ngClass]="{ 'course-item--top-rated': person.status }">
-  <section class="course-item__content">
+<mat-card class="people-item"
+  [ngClass]="{ 'people-item--is-wanted': person.status }">
+  <section class="people-item__content">
     <header class="card-header">
       <h2 class="card-header__title">
         <span>{{person.fullName | uppercase}}</span>
@@ -12,16 +12,16 @@
         </div>
       </div>
     </header>
-    <main class="course-item__content__desctiption">
+    <main class="people-item__content__desctiption">
       {{person.photoName}}
     </main>
   </section>
-  <aside class="course-item__actions">
-    <button class="course-item__actions__edit" mat-button color="primary" (click)="onEdit()">
+  <aside class="people-item__actions">
+    <button class="people-item__actions__edit" mat-button color="primary" (click)="onEdit()">
       <mat-icon>edit</mat-icon>
       <span translate>Edit</span>
     </button>
-    <button class="course-item__actions__remove" mat-button color="warn" (click)="onRemove()">
+    <button class="people-item__actions__remove" mat-button color="warn" (click)="onRemove()">
       <mat-icon>remove</mat-icon>
       <span translate>Delete</span>
     </button>

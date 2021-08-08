@@ -9,7 +9,7 @@ import {
 import { SubForm } from '../sub-form/sub-form';
 
 @Component({
-  selector: 'app-course-duration-input',
+  selector: 'app-person-cash-input',
   templateUrl: './person-cash-input.component.html',
   styleUrls: ['./person-cash-input.component.scss'],
   providers: [

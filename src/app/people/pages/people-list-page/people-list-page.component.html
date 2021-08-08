@@ -1,32 +1,32 @@
-<section class="course-toolbar">
-  <div class="course-toolbar__search">
+<section class="people-toolbar">
+  <div class="people-toolbar__search">
     <mat-form-field>
       <input matInput [formControl]="searchInput" name="searchCriteria" placeholder="{{ 'Search сourses' | translate }}">
     </mat-form-field>
   </div>
 
-  <div class="course-toolbar__add-course">
+  <div class="people-toolbar__add-person">
     <button mat-raised-button routerLink="new">
       <mat-icon>add</mat-icon>
-      <span translate>Add course</span>
+      <span translate>Add person</span>
     </button>
   </div>
 </section>
 
 <ng-container *ngIf="people$ | async as people; else noData">
-  <section class="course-list" *ngIf="people.length; else noData">
+  <section class="people-list" *ngIf="people.length; else noData">
     <app-people-item
-      *ngFor="let course of people | orderBy:'creationDate'"
-      [person]="course"
+      *ngFor="let person of people | orderBy:'creationDate'"
+      [person]="person"
       (edit)="editPerson($event)"
       (remove)="removePerson($event)">
     </app-people-item>
-    <button class="course-list__load-more" mat-raised-button *ngIf="hasMorePeople$ | async" (click)="loadMorePeople()">
+    <button class="people-list__load-more" mat-raised-button *ngIf="hasMorePeople$ | async" (click)="loadMorePeople()">
       <span translate>Load more</span>
     </button>
   </section>
 </ng-container>
 
 <ng-template #noData>
-  <div class="no-data" translate="No Courses"></div>
+  <div class="no-data" translate="No people"></div>
 </ng-template>

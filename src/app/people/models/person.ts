@@ -1,9 +1,3 @@
-export interface CourseAuthor {
-  id?: number;
-  firstName: string;
-  lastName?: string;
-}
-
 export interface Person {
   id?: number;
   fullName: string;

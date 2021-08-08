@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Person, CourseAuthor } from '../../models/person';
+import { Person } from '../../models/person';
 import { Store } from '@ngrx/store';
 import { PeopleState } from '../../reducers/people.reducer';
 import { EditPersonAction } from '../../actions/people.actions';
@@ -12,7 +12,6 @@ import { EditPersonAction } from '../../actions/people.actions';
 })
 export class EditPersonPageComponent implements OnInit {
   person: Person;
-  authors: CourseAuthor[];
 
   constructor(private store: Store<PeopleState>,
               private route: ActivatedRoute,
@@ -22,8 +21,8 @@ export class EditPersonPageComponent implements OnInit {
     this.person = this.route.snapshot.data['person'];
   }
 
-  onSubmit(course: Person) {
-    this.store.dispatch(new EditPersonAction(course));
+  onSubmit(person: Person) {
+    this.store.dispatch(new EditPersonAction(person));
   }
 
   onCancel() {

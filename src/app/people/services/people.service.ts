@@ -1,4 +1,4 @@
-import { PeopleResponse, CourseAuthor } from '../models/person';
+import { PeopleResponse } from '../models/person';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -40,17 +40,5 @@ export class PeopleService {
 
   removeItem(person: Person): Observable<any> {
     return this.http.delete(`${this.PEOPLE_URL}/${person.id}`);
-  }
-
-  getAuthors(): Observable<CourseAuthor[]> {
-    return this.http.get<any[]>(`${this.AUTHORS_URL}`).pipe(
-      map((response) => response.map((item) => {
-        const fullName = item.name.split(' ');
-        return {
-          firstName: fullName[0],
-          lastName: fullName[1]
-        };
-      }))
-    );
   }
 }

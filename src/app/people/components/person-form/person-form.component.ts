@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewChildren, QueryList } from '@angular/core';
 
-import { Person, CourseAuthor } from '../../models/person';
+import { Person } from '../../models/person';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
