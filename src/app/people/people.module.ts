@@ -31,11 +31,10 @@ import { AuthorsResolver } from './resolvers/authors.resolver';
 
 import { reducer } from './reducers/people.reducer';
 import { PeopleEffects } from './effects/people.effects';
-import { CourseDateInputComponent } from './components/person-form/course-date-input/course-date-input.component';
-import { CourseDurationInputComponent } from './components/person-form/course-duration-input/course-duration-input.component';
-import { CourseAuthorsInputComponent } from './components/person-form/course-authors-input/course-authors-input.component';
+import { PersonCashInputComponent } from './components/person-form/person-cash-input/person-cash-input.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PeopleRoutingModule } from './people-routing.module';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   imports: [
@@ -50,6 +49,7 @@ import { PeopleRoutingModule } from './people-routing.module';
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
+    MatSlideToggleModule,
     PeopleRoutingModule,
     TranslateModule.forChild({}),
     StoreModule.forFeature('people', reducer),
@@ -66,9 +66,7 @@ import { PeopleRoutingModule } from './people-routing.module';
     PersonFormComponent,
     EditPersonPageComponent,
     CreatePersonPageComponent,
-    CourseDateInputComponent,
-    CourseDurationInputComponent,
-    CourseAuthorsInputComponent,
+    PersonCashInputComponent,
   ],
   providers: [PeopleService, PersonResolver, AuthorsResolver, FilterByPipe],
   entryComponents: [ConfirmationDialogComponent],

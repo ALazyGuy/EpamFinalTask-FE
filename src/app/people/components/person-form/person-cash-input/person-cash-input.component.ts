@@ -10,38 +10,38 @@ import { SubForm } from '../sub-form/sub-form';
 
 @Component({
   selector: 'app-course-duration-input',
-  templateUrl: './course-duration-input.component.html',
-  styleUrls: ['./course-duration-input.component.scss'],
+  templateUrl: './person-cash-input.component.html',
+  styleUrls: ['./person-cash-input.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CourseDurationInputComponent),
+      useExisting: forwardRef(() => PersonCashInputComponent),
       multi: true,
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => CourseDurationInputComponent),
+      useExisting: forwardRef(() => PersonCashInputComponent),
       multi: true
     }
   ],
 })
-export class CourseDurationInputComponent extends SubForm {
+export class PersonCashInputComponent extends SubForm {
   form = new FormGroup({
-    length: new FormControl('')
+    cash: new FormControl('')
   });
 
   @Input() errorMatcher: any;
 
   writeValue(value: any): void {
-    super.writeValue({ length: value });
+    super.writeValue({ cash: value });
   }
 
   registerOnChange(fn: (value: any) => void): void {
-    super.registerOnChange((value) => fn(value.length));
+    super.registerOnChange((value) => fn(value.cash));
   }
 
   validate(): ValidationErrors | null {
-    return !this.form.value.length || Number.isInteger(+this.form.value.length)
+    return !this.form.value.cash || Number.isInteger(+this.form.value.cash)
       ? null
       : { notInteger: true };
   }

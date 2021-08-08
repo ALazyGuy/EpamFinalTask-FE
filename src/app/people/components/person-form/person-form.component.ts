@@ -12,7 +12,6 @@ export class PersonFormComponent implements OnInit {
   personForm: FormGroup;
 
   @Input() person: Person = {} as Person;
-  @Input() suggestedAuthors: CourseAuthor[];
 
   @Output() save = new EventEmitter<Person>();
   @Output() cancel = new EventEmitter();
@@ -24,11 +23,10 @@ export class PersonFormComponent implements OnInit {
   ngOnInit(): void {
     this.personForm = this.fb.group({
       id: [this.person.id],
-      name: [this.person.name, [Validators.required, Validators.maxLength(50)]],
-      description: [this.person.description, [Validators.required, Validators.maxLength(500)]],
-      date: [this.person.date, Validators.required],
-      length: [this.person.length, Validators.required],
-      authors: [this.person.authors],
+      fullName: [this.person.fullName, [Validators.required, Validators.maxLength(50)]],
+      photoName: [this.person.photoName, [Validators.required, Validators.maxLength(500)]],
+      cash: [this.person.cash, Validators.required],
+      status: [this.person.status],
     });
   }
 

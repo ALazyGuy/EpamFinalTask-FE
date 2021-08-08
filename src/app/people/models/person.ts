@@ -6,12 +6,10 @@ export interface CourseAuthor {
 
 export interface Person {
   id?: number;
-  name: string;
-  date: string;
-  length: number;
-  description: string;
-  authors?: CourseAuthor[];
-  isTopRated?: boolean;
+  fullName: string;
+  cash: number;
+  status: boolean;
+  photoName: string;
 }
 
 export interface PeopleResponse {

@@ -1,33 +1,27 @@
 <mat-card>
   <form autocomplete="off" [formGroup]="personForm" (submit)="onSubmit()">
     <mat-form-field>
-      <input matInput formControlName="name" placeholder="{{ 'Title' | translate }}" name="title">
-      <mat-error *ngIf="personForm.controls['name'].hasError('required')">
+      <input matInput formControlName="fullName" placeholder="{{ 'Full name' | translate }}" name="title">
+      <mat-error *ngIf="personForm.controls['fullName'].hasError('required')">
         <span translate>Please enter a course title</span>
       </mat-error>
-      <mat-error *ngIf="personForm.controls['name'].hasError('maxlength')">
+      <mat-error *ngIf="personForm.controls['fullName'].hasError('maxlength')">
         <span translate>Course title is loo long</span>
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput formControlName="description" placeholder="{{ 'Description' | translate }}" name="description"></textarea>
-      <mat-error *ngIf="personForm.controls['description'].hasError('required')">
-        <span translate>Please enter a course description</span>
+      <textarea matInput formControlName="photoName" placeholder="{{ 'Photo name' | translate }}" name="photoName"></textarea>
+      <mat-error *ngIf="personForm.controls['photoName'].hasError('required')">
+        <span translate>Please enter a photo name</span>
       </mat-error>
-      <mat-error *ngIf="personForm.controls['description'].hasError('maxlength')">
-        <span translate>Course description is loo long</span>
+      <mat-error *ngIf="personForm.controls['photoName'].hasError('maxlength')">
+        <span translate>Photo name is loo long</span>
       </mat-error>
     </mat-form-field>
-    <app-course-date-input
-      formControlName="date"
-      [errorMatcher]="createCustomErrorStateMatcher('date')"></app-course-date-input>
     <app-course-duration-input
-      formControlName="length"
-      [errorMatcher]="createCustomErrorStateMatcher('length')"></app-course-duration-input>
-    <app-course-authors-input
-      formControlName="authors"
-      [suggestedAuthors]="suggestedAuthors"
-      [errorMatcher]="createCustomErrorStateMatcher('authors')"></app-course-authors-input>
+      formControlName="cash"
+      [errorMatcher]="createCustomErrorStateMatcher('cash')"></app-course-duration-input>
+    <mat-slide-toggle formControlName="status">Is wanted</mat-slide-toggle>
     <div class="form-actions">
       <button type="submit" mat-raised-button [disabled]="personForm.invalid">
         <span translate>Save</span>

@@ -4,15 +4,15 @@
       matInput
       (blur)="onTouched()"
       [errorStateMatcher]="errorMatcher"
-      formControlName="length"
-      placeholder="{{ 'Duration' | translate }}"
-      name="duration">
+      formControlName="cash"
+      placeholder="{{ 'Cash' | translate }}"
+      name="cash">
       <mat-error *ngIf="errorMatcher.hasError('required')">
-        <span translate>Please enter a duration</span>
+        <span translate>Please enter cash</span>
       </mat-error>
       <mat-error *ngIf="errorMatcher.hasError('notInteger')">
-        <span translate>Duration value is invalid</span>
+        <span translate>Cash value is invalid</span>
       </mat-error>
   </mat-form-field>
-  <span class="converted-duration" *ngIf="form.value.length">{{ form.value.length | minutesToTime }}</span>
+  <span class="converted-duration" *ngIf="form.value.cash && !errorMatcher.hasError('notInteger')">{{ form.value.cash | currency }}</span>
 </div>

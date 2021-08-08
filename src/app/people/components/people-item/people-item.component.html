@@ -1,24 +1,19 @@
 <mat-card class="course-item"
-  appCreationDateStatus
-  [creationDateString]="person.date"
-  [ngClass]="{ 'course-item--top-rated': person.isTopRated }">
+  [ngClass]="{ 'course-item--top-rated': person.status }">
   <section class="course-item__content">
     <header class="card-header">
       <h2 class="card-header__title">
-        <span>{{person.name | uppercase}}</span>
-        <mat-icon *ngIf="person.isTopRated">star_rate</mat-icon>
+        <span>{{person.fullName | uppercase}}</span>
+        <mat-icon *ngIf="person.status">star_rate</mat-icon>
       </h2>
       <div class="card-header__info">
         <div class="card-header__info__duration">
-          {{person.length | minutesToTime}}
-        </div>
-        <div class="card-header__info__date">
-          {{person.date | date : 'MM.dd.yyyy'}}
+          {{person.cash | currency}}
         </div>
       </div>
     </header>
     <main class="course-item__content__desctiption">
-      {{person.description}}
+      {{person.photoName}}
     </main>
   </section>
   <aside class="course-item__actions">

@@ -20,7 +20,6 @@ export class EditPersonPageComponent implements OnInit {
 
   ngOnInit() {
     this.person = this.route.snapshot.data['person'];
-    this.authors = this.route.snapshot.data['authors'];
   }
 
   onSubmit(course: Person) {

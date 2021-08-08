@@ -19,16 +19,12 @@ const routes: Routes = [
         name: 'Create'
       }
     },
-    resolve: {
-      authors: AuthorsResolver
-    }
   },
   {
     path: ':id',
     component: EditPersonPageComponent,
     resolve: {
-      person: PersonResolver,
-      authors: AuthorsResolver
+      person: PersonResolver
     }
   }
 ];
