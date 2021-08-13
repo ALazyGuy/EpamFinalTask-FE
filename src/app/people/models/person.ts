@@ -5,8 +5,3 @@ export interface Person {
   status: boolean;
   photoName: string;
 }
-
-export interface PeopleResponse {
-  people: Person[];
-  hasMorePeople: boolean;
-}

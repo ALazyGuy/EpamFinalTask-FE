@@ -46,7 +46,10 @@ export class AuthEffects {
       user => this.authService.register(user)
         .pipe(
           map(({ token }) => new RegistrationSuccessAction(token)),
-          catchError((error) => of(new RegistrationFailAction(error)))
+          catchError((error) => of(new RegistrationFailAction({
+            ...error,
+            message: 'User with such email is already exist'
+          })))
         )
     )
   );

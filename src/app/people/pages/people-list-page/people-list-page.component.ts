@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
-import { PeopleState, getPeople, getHasMorePeople } from '../../reducers/people.reducer';
-import { LoadPeopleAction, LoadMorePeopleAction, RemovePersonAction } from '../../actions/people.actions';
+import { PeopleState, getPeople } from '../../reducers/people.reducer';
+import { LoadPeopleAction, RemovePersonAction } from '../../actions/people.actions';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,6 @@ import { FormControl } from '@angular/forms';
 })
 export class PeopleListPageComponent implements OnInit {
   people$ = this.store.pipe(select(getPeople));
-  hasMorePeople$ = this.store.pipe(select(getHasMorePeople));
   searchInput = new FormControl();
 
   private debounceSubject = new Subject<string>();
@@ -42,10 +41,6 @@ export class PeopleListPageComponent implements OnInit {
 
   loadPeople() {
     this.store.dispatch(new LoadPeopleAction({ searchCriteria: this.searchInput.value }));
-  }
-
-  loadMorePeople() {
-    this.store.dispatch(new LoadMorePeopleAction());
   }
 
   editPerson(person: Person) {

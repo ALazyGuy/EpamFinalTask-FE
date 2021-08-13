@@ -17,10 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import { MinutesToTimePipe } from './pipes/minutes-to-time.pipe';
 import { CreationDateStatusDirective } from './directives/creation-date-status.directive';
-import { FilterByPipe } from './pipes/filter-by.pipe';
-import { OrderByPipe } from './pipes/order-by.pipe';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { PersonFormComponent } from './components/person-form/person-form.component';
 import { PeopleService } from './services/people.service';
@@ -33,7 +30,7 @@ import { PeopleEffects } from './effects/people.effects';
 import { PersonCashInputComponent } from './components/person-form/person-cash-input/person-cash-input.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PeopleRoutingModule } from './people-routing.module';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 @NgModule({
   imports: [
@@ -57,17 +54,14 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
   declarations: [
     PeopleListPageComponent,
     PeopleItemComponent,
-    MinutesToTimePipe,
     CreationDateStatusDirective,
-    FilterByPipe,
-    OrderByPipe,
     ConfirmationDialogComponent,
     PersonFormComponent,
     EditPersonPageComponent,
     CreatePersonPageComponent,
     PersonCashInputComponent,
   ],
-  providers: [PeopleService, PersonResolver, FilterByPipe],
+  providers: [PeopleService, PersonResolver],
   entryComponents: [ConfirmationDialogComponent],
 })
 export class PeopleModule {}

@@ -5,4 +5,10 @@ export interface User {
   surname: string;
   middleName: string;
   cash: number;
+  role: UserRole;
+}
+
+export enum UserRole {
+  ROLE_USER,
+  ROLE_ADMIN
 }

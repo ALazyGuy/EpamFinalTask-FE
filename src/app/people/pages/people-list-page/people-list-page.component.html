@@ -16,14 +16,11 @@
 <ng-container *ngIf="people$ | async as people; else noData">
   <section class="people-list" *ngIf="people.length; else noData">
     <app-people-item
-      *ngFor="let person of people | orderBy:'creationDate'"
+      *ngFor="let person of people"
       [person]="person"
       (edit)="editPerson($event)"
       (remove)="removePerson($event)">
     </app-people-item>
-    <button class="people-list__load-more" mat-raised-button *ngIf="hasMorePeople$ | async" (click)="loadMorePeople()">
-      <span translate>Load more</span>
-    </button>
   </section>
 </ng-container>
 

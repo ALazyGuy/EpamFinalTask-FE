@@ -5,23 +5,23 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
-  private readonly AUTH_URL = 'auth';
+  private readonly AUTH_URL = 'user';
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.AUTH_URL}/login`, {
+    return this.http.post(`${this.AUTH_URL}/auth`, {
       email,
       password
     });
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.AUTH_URL}/register`, user)
+    return this.http.post(`${this.AUTH_URL}/add`, user)
   }
 
   getUserInfo(): Observable<User> {
-    return this.http.get<User>(`${this.AUTH_URL}/userInfo`);
+    return this.http.get<User>(`${this.AUTH_URL}/current`);
   }
 
   getToken(): string {
