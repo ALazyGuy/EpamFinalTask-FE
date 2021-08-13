@@ -14,9 +14,16 @@ export class PeopleService {
   }
 
   getList(searchCriteria?: string): Observable<Person[]> {
-    return searchCriteria
+    return !searchCriteria || searchCriteria === null
       ? this.getAll()
       : this.searchPeople(searchCriteria as string)
+  }
+
+  uploadImage(image: File): Observable<void> {
+    const formData = new FormData();
+    formData.append('file', image, image.name);
+
+    return this.http.post<void>(`${this.PEOPLE_URL}/photo`, formData);
   }
 
   createPerson(person: Person): Observable<Person> {
@@ -24,7 +31,7 @@ export class PeopleService {
   }
 
   getItemById(id: number): Observable<Person> {
-    return this.http.get<Person>(`${this.PEOPLE_URL}/${id}`);
+    return this.http.get<Person>(`${this.PEOPLE_URL}/getById`, { params: { id } });
   }
 
   updateItem(person: Person): Observable<Person> {

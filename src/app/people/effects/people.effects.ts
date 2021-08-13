@@ -16,6 +16,7 @@ import {
 } from '../actions/people.actions';
 import { Person } from '../models/person';
 import { PeopleState, getSearchCriteria } from '../reducers/people.reducer';
+import {IncreaseUserCashAction} from "../../auth/actions/auth.actions";
 
 @Injectable()
 export class PeopleEffects {
@@ -45,7 +46,7 @@ export class PeopleEffects {
     )
   );
 
-  @Effect({ dispatch: false })
+  @Effect()
   public editPerson$: Observable<any> = this.actions$.pipe(
     ofType(EDIT_PERSON_ACTION),
     pluck('payload'),
@@ -53,6 +54,7 @@ export class PeopleEffects {
       (person: Person) => this.peopleService.updateItem(person)
         .pipe(
           tap(() => this.router.navigate(['/'])),
+          map(() => new IncreaseUserCashAction(person.cash)),
           catchError(() => of()) // TODO: create some notification area for errors
         )
     )

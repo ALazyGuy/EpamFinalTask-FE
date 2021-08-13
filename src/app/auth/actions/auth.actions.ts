@@ -13,6 +13,7 @@ export const REGISTRATION_FAIL_ACTION = '[Auth] Registration Fail';
 
 export const SET_IS_AUTHENTICATED_ACTION = '[Auth] Set Is Authenticated';
 export const SET_USER_ACTION = '[Auth] Set User';
+export const INCREASE_USER_CASH_ACTION = '[Auth] Increase User Cash';
 
 export const CLEAR_LOGIN_ERROR = '[Auth] Clear Login Error';
 
@@ -68,6 +69,12 @@ export class SetUserAction implements Action {
   constructor(public payload: User | null) {}
 }
 
+export class IncreaseUserCashAction implements Action {
+  public readonly type = INCREASE_USER_CASH_ACTION;
+
+  constructor(public payload: number) {}
+}
+
 export class ClearLoginErrorAction implements Action {
   public readonly type = CLEAR_LOGIN_ERROR;
 }
@@ -82,4 +89,5 @@ export type AuthAction =
   | RegistrationFailAction
   | SetIsAuthenticatedAction
   | SetUserAction
+  | IncreaseUserCashAction
   | ClearLoginErrorAction;

@@ -1,12 +1,7 @@
-import { CLEAR_LOGIN_ERROR, REGISTRATION_FAIL_ACTION } from './../actions/auth.actions';
-import { User } from '../models/user';
-import {
-  SET_IS_AUTHENTICATED_ACTION,
-  SET_USER_ACTION,
-  LOG_IN_FAIL_ACTION,
-  AuthAction
-} from '../actions/auth.actions';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import {CLEAR_LOGIN_ERROR, INCREASE_USER_CASH_ACTION, REGISTRATION_FAIL_ACTION} from './../actions/auth.actions';
+import {User} from '../models/user';
+import {AuthAction, LOG_IN_FAIL_ACTION, SET_IS_AUTHENTICATED_ACTION, SET_USER_ACTION} from '../actions/auth.actions';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface AuthState {
   isAuthenticated: boolean;
@@ -33,6 +28,16 @@ export function reducer(state = initialState, action: AuthAction) {
       return {
         ...state,
         currentUser: action.payload
+      };
+    }
+
+    case INCREASE_USER_CASH_ACTION: {
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          cash: (state.currentUser && state.currentUser.cash + action.payload) || 0,
+        }
       };
     }
 

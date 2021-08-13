@@ -9,19 +9,16 @@
         <span translate>Full name is loo long</span>
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <textarea matInput formControlName="photoName" placeholder="{{ 'Photo name' | translate }}" name="photoName"></textarea>
-      <mat-error *ngIf="personForm.controls['photoName'].hasError('required')">
-        <span translate>Please enter a photo name</span>
-      </mat-error>
-      <mat-error *ngIf="personForm.controls['photoName'].hasError('maxlength')">
-        <span translate>Photo name is loo long</span>
-      </mat-error>
-    </mat-form-field>
     <app-person-cash-input
       formControlName="cash"
       [errorMatcher]="createCustomErrorStateMatcher('cash')"></app-person-cash-input>
-    <mat-slide-toggle formControlName="status">Is wanted</mat-slide-toggle>
+    <ng-container *ngIf="isCreateMode">
+      <input #imageInput hidden="true" type="file" (click)="$any($event).value = null" (change)="onFileChange($event)"
+             accept="image/*"/>
+      <button mat-flat-button color="primary" (click)="imageInput.click(); $event.preventDefault()">{{ fileName || 'Choose image' }}</button>
+    </ng-container>
+    <img *ngIf="previewUrl" [src]="previewUrl || person.photoName">
+    <mat-slide-toggle *ngIf="!isCreateMode" formControlName="status">Arrested</mat-slide-toggle>
     <div class="form-actions">
       <button type="submit" mat-raised-button [disabled]="personForm.invalid">
         <span translate>Save</span>
