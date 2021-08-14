@@ -10,6 +10,7 @@ import {environment} from "../../../../environments/environment";
 })
 export class PeopleItemComponent {
   @Input() person: Person;
+  @Input() isAdmin: boolean | null;
 
   @Output() edit = new EventEmitter<Person>();
   @Output() remove = new EventEmitter<Person>();

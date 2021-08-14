@@ -17,11 +17,11 @@
     </main>
   </section>
   <aside class="people-item__actions">
-    <button class="people-item__actions__edit" mat-button color="primary" (click)="onEdit()">
+    <button *ngIf="isAdmin" class="people-item__actions__edit" mat-button color="primary" (click)="onEdit()">
       <mat-icon>edit</mat-icon>
       <span translate>Edit</span>
     </button>
-    <button class="people-item__actions__remove" mat-button color="warn" (click)="onRemove()">
+    <button *ngIf="isAdmin" class="people-item__actions__remove" mat-button color="warn" (click)="onRemove()">
       <mat-icon>remove</mat-icon>
       <span translate>Delete</span>
     </button>

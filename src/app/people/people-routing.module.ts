@@ -4,6 +4,7 @@ import { PeopleListPageComponent } from './pages/people-list-page/people-list-pa
 import { CreatePersonPageComponent } from './pages/create-person-page/create-person-page.component';
 import { EditPersonPageComponent } from './pages/edit-person-page/edit-person-page.component';
 import { PersonResolver } from './resolvers/person-resolver.service';
+import { IsAdminGuard } from "../auth/guards/is-admin.guard";
 
 const routes: Routes = [
   {
@@ -24,7 +25,10 @@ const routes: Routes = [
     component: EditPersonPageComponent,
     resolve: {
       person: PersonResolver
-    }
+    },
+    canActivate: [
+      IsAdminGuard
+    ]
   }
 ];
 

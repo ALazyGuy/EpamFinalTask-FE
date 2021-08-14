@@ -18,6 +18,7 @@
     <app-people-item
       *ngFor="let person of people"
       [person]="person"
+      [isAdmin]="isAdmin$ | async"
       (edit)="editPerson($event)"
       (remove)="removePerson($event)">
     </app-people-item>

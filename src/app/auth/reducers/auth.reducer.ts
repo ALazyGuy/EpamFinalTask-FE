@@ -1,5 +1,5 @@
 import {CLEAR_LOGIN_ERROR, INCREASE_USER_CASH_ACTION, REGISTRATION_FAIL_ACTION} from './../actions/auth.actions';
-import {User} from '../models/user';
+import { User, UserRole } from '../models/user';
 import {AuthAction, LOG_IN_FAIL_ACTION, SET_IS_AUTHENTICATED_ACTION, SET_USER_ACTION} from '../actions/auth.actions';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 
@@ -67,3 +67,4 @@ const authStateSelector = createFeatureSelector<AuthState>('auth');
 export const isAuthenticated = createSelector(authStateSelector, (state: AuthState) => state.isAuthenticated);
 export const currentUser = createSelector(authStateSelector, (state: AuthState) => state.currentUser);
 export const loginErrorMessage = createSelector(authStateSelector, (state: AuthState) => state.loginErrorMessage);
+export const isAdmin = createSelector(currentUser, (user) => !!user ? user.role === UserRole.ROLE_ADMIN : false);

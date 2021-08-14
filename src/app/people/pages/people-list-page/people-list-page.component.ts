@@ -9,6 +9,7 @@ import { Store, select } from '@ngrx/store';
 import { PeopleState, getPeople } from '../../reducers/people.reducer';
 import { LoadPeopleAction, RemovePersonAction } from '../../actions/people.actions';
 import { FormControl } from '@angular/forms';
+import { isAdmin } from "../../../auth/reducers/auth.reducer";
 
 @Component({
   selector: 'app-people-list',
@@ -17,6 +18,8 @@ import { FormControl } from '@angular/forms';
 })
 export class PeopleListPageComponent implements OnInit {
   people$ = this.store.pipe(select(getPeople));
+  isAdmin$ = this.store.pipe(select(isAdmin));
+
   searchInput = new FormControl();
 
   private debounceSubject = new Subject<string>();

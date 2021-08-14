@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { reducer } from './reducers/auth.reducer';
 import { AuthEffects } from './effects/auth.effects';
+import { IsAdminGuard } from "./guards/is-admin.guard";
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { AuthEffects } from './effects/auth.effects';
   providers: [
     AuthService,
     AuthGuard,
+    IsAdminGuard,
   ]
 })
 export class AuthModule { }
