@@ -27,5 +27,16 @@
   "Please enter email": "Bitte E-Mail eingeben",
   "Please enter password": "Bitte Passwort eingeben",
   "Please enter password confirmation": "Bitte Passwortbestätigung eingeben",
-  "Passwords are not matched": "Passwörter stimmen nicht überein"
+  "Passwords are not matched": "Passwörter stimmen nicht überein",
+  "People": "Menschen",
+  "Search people": "Personen suchen",
+  "Add person": "Person hinzufügen",
+  "No people": "Keine Leute",
+  "Full name": "Vollständiger Name",
+  "Please enter a full name": "Bitte geben Sie einen vollständigen Namen ein",
+  "Full name is too long": "Der vollständige Name ist zu lang",
+  "Choose image": "Bild auswählen",
+  "Please enter cash": "Bitte Bargeld eingeben",
+  "Cash value is invalid": "Barwert ist ungültig",
+  "Arrested": "Verhaftet"
 }

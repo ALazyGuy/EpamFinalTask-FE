@@ -6,7 +6,7 @@
         <span translate>Please enter a full name</span>
       </mat-error>
       <mat-error *ngIf="personForm.controls['fullName'].hasError('maxlength')">
-        <span translate>Full name is loo long</span>
+        <span translate>Full name is too long</span>
       </mat-error>
     </mat-form-field>
     <app-person-cash-input
@@ -15,7 +15,7 @@
     <ng-container *ngIf="isCreateMode">
       <input #imageInput hidden="true" type="file" (click)="$any($event).value = null" (change)="onFileChange($event)"
              accept="image/*"/>
-      <button mat-flat-button color="primary" (click)="imageInput.click(); $event.preventDefault()">{{ fileName || 'Choose image' }}</button>
+      <button mat-flat-button color="primary" (click)="imageInput.click(); $event.preventDefault()">{{ fileName || 'Choose image' | translate }}</button>
     </ng-container>
     <img *ngIf="previewUrl" [src]="previewUrl || person.photoName">
     <mat-slide-toggle *ngIf="!isCreateMode" formControlName="status">Arrested</mat-slide-toggle>

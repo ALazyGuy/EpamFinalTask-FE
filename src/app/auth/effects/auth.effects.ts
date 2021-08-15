@@ -17,6 +17,7 @@ import {
   RegistrationSuccessAction,
   RegistrationFailAction,
   REGISTRATION_SUCCESS_ACTION,
+  LogOutAction,
 } from '../actions/auth.actions';
 import { Router } from '@angular/router';
 
@@ -27,9 +28,9 @@ export class AuthEffects {
     ofType(LOG_IN_ACTION),
     pluck('payload'),
     switchMap(
-      ({ email, password }) => this.authService.login(email, password)
+      ({email, password}) => this.authService.login(email, password)
         .pipe(
-          map(({ token }) => new LogInSuccessAction(token)),
+          map(({token}) => new LogInSuccessAction(token)),
           catchError((error) => of(new LogInFailAction({
             ...error,
             message: error.status === 401 ? 'Incorrect username or password' : error.message
@@ -45,7 +46,7 @@ export class AuthEffects {
     switchMap(
       user => this.authService.register(user)
         .pipe(
-          map(({ token }) => new RegistrationSuccessAction(token)),
+          map(({token}) => new RegistrationSuccessAction(token)),
           catchError((error) => of(new RegistrationFailAction({
             ...error,
             message: 'User with such email is already exist'
@@ -55,7 +56,7 @@ export class AuthEffects {
   );
 
   @Effect()
-  public logInSuccess$: Observable<SetIsAuthenticatedAction | SetUserAction> = this.actions$.pipe(
+  public logInSuccess$: Observable<SetIsAuthenticatedAction | SetUserAction | LogOutAction> = this.actions$.pipe(
     ofType(LOG_IN_SUCCESS_ACTION, REGISTRATION_SUCCESS_ACTION),
     pluck('payload'),
     tap((token) => localStorage.accessToken = JSON.stringify(token)),
@@ -68,9 +69,8 @@ export class AuthEffects {
           ]),
           tap(() => this.router.navigate(['/'])),
           catchError(() => of(
-            new SetIsAuthenticatedAction(false),
-            new SetUserAction(null)
-          ))
+            new LogOutAction(),
+          )),
         )
     )
   );
@@ -92,5 +92,6 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+  }
 }

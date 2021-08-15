@@ -27,5 +27,16 @@
   "Please enter email": "Пожалуйста введите email",
   "Please enter password": "Пожалуйста введите пароль",
   "Please enter password confirmation": "Пожалуйста подтвердите пароль",
-  "Passwords are not matched": "Пароли не совпадают"
+  "Passwords are not matched": "Пароли не совпадают",
+  "People": "Люди",
+  "Search people": "Искать людей",
+  "Add person": "Добавить человека",
+  "No people": "Нет людей",
+  "Full name": "ФИО",
+  "Please enter a full name": "Пожалуйста введите ФИО",
+  "Full name is too long": "Значение ФИО слишком длинное",
+  "Choose image": "Выберете изображение",
+  "Please enter cash": "Введите вознаграждение",
+  "Cash value is invalid": "Значение вознаграждение неверное",
+  "Arrested": "Арестован"
 }

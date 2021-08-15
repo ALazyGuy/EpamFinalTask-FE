@@ -34,7 +34,7 @@ export class PersonFormComponent implements OnInit {
     this.isCreateMode = !this.person || !Object.keys(this.person).length;
     this.personForm = this.fb.group({
       id: [this.person.id],
-      fullName: [this.person.fullName, [Validators.required, Validators.maxLength(50)]],
+      fullName: [this.person.fullName, [Validators.required, Validators.maxLength(45)]],
       cash: [this.person.cash, Validators.required],
       status: [this.person.status],
     });

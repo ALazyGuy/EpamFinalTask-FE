@@ -25,10 +25,7 @@ const routes: Routes = [
     component: EditPersonPageComponent,
     resolve: {
       person: PersonResolver
-    },
-    canActivate: [
-      IsAdminGuard
-    ]
+    }
   }
 ];
 
