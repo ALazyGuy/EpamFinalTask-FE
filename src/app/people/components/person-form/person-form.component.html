@@ -20,7 +20,7 @@
     <img *ngIf="previewUrl" [src]="previewUrl || person.photoName">
     <mat-slide-toggle *ngIf="!isCreateMode" formControlName="status">Arrested</mat-slide-toggle>
     <div class="form-actions">
-      <button type="submit" mat-raised-button [disabled]="personForm.invalid">
+      <button type="submit" mat-raised-button [disabled]="personForm.invalid || personForm.disabled || personForm.value.status === person.status">
         <span translate>Save</span>
       </button>
       <button type="button" color="warn" mat-raised-button (click)="onCancel(); $event.preventDefault()">

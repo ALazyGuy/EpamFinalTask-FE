@@ -42,11 +42,11 @@ export class PersonFormComponent implements OnInit {
     if (!this.isCreateMode) {
       this.previewUrl = `${environment.API_URL}/static/${this.person.photoName}`;
 
-      this.personForm.controls['fullName'].disable();
-      this.personForm.controls['cash'].disable();
-
       if (this.person.status) {
-        this.personForm.controls['status'].disable();
+        this.personForm.disable();
+      } else {
+        this.personForm.controls['fullName'].disable();
+        this.personForm.controls['cash'].disable();
       }
     }
   }
