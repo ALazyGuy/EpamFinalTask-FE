@@ -1,4 +1,10 @@
-import { LoadPeopleAction, RemovePersonAction, PeopleAction } from '../actions/people.actions';
+import {
+  LoadPeopleAction,
+  RemovePersonAction,
+  PeopleAction,
+  ARREST_PERSON_ACTION,
+  ArrestPersonAction
+} from '../actions/people.actions';
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
@@ -16,7 +22,8 @@ import {
 } from '../actions/people.actions';
 import { Person } from '../models/person';
 import { PeopleState, getSearchCriteria } from '../reducers/people.reducer';
-import {IncreaseUserCashAction} from "../../auth/actions/auth.actions";
+import { IncreaseUserCashAction, LogInSuccessAction } from "../../auth/actions/auth.actions";
+import { AuthService } from "../../auth/services/auth.service";
 
 @Injectable()
 export class PeopleEffects {
@@ -46,7 +53,7 @@ export class PeopleEffects {
     )
   );
 
-  @Effect()
+  @Effect({ dispatch: false })
   public editPerson$: Observable<any> = this.actions$.pipe(
     ofType(EDIT_PERSON_ACTION),
     pluck('payload'),
@@ -54,7 +61,6 @@ export class PeopleEffects {
       (person: Person) => this.peopleService.updateItem(person)
         .pipe(
           tap(() => this.router.navigate(['/'])),
-          map(() => new IncreaseUserCashAction(person.cash)),
           catchError(() => of()) // TODO: create some notification area for errors
         )
     )
@@ -74,9 +80,24 @@ export class PeopleEffects {
     )
   );
 
+  @Effect()
+  public arrestPerson$: Observable<LoadPeopleAction | LogInSuccessAction> = this.actions$.pipe(
+    ofType(ARREST_PERSON_ACTION),
+    map((action: ArrestPersonAction) => action.payload),
+    withLatestFrom(this.store.pipe(select(getSearchCriteria))),
+    switchMap(
+      ([ person, searchCriteria ]) => this.peopleService.arrest(person)
+        .pipe(
+          catchError(() => of()), // TODO: create some notification area for errors
+          switchMap(() => [new LoadPeopleAction({ searchCriteria }), new LogInSuccessAction(this.authService.getToken())])
+        )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private peopleService: PeopleService,
+    private authService: AuthService,
     private store: Store<PeopleState>,
     private router: Router
   ) {}

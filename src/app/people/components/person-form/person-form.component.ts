@@ -33,10 +33,8 @@ export class PersonFormComponent implements OnInit {
   ngOnInit(): void {
     this.isCreateMode = !this.person || !Object.keys(this.person).length;
     this.personForm = this.fb.group({
-      id: [this.person.id],
       fullName: [this.person.fullName, [Validators.required, Validators.maxLength(45)]],
       cash: [this.person.cash, Validators.required],
-      status: [this.person.status],
     });
 
     if (!this.isCreateMode) {
@@ -44,9 +42,6 @@ export class PersonFormComponent implements OnInit {
 
       if (this.person.status) {
         this.personForm.disable();
-      } else {
-        this.personForm.controls['fullName'].disable();
-        this.personForm.controls['cash'].disable();
       }
     }
   }
@@ -78,21 +73,19 @@ export class PersonFormComponent implements OnInit {
     }
 
     obs.subscribe(() => {
-      const {value} = this.personForm;
-      let {id, status, ...user} = value;
+      let { value } = this.personForm;
+      let { authorId, status, ...user } = value;
 
-      user = !this.isCreateMode
+      value = !this.isCreateMode
         ? {
           ...user,
-          id,
-          status,
-          cash: this.person.cash
+          id: this.person.id,
         } : {
           ...user,
           photoName: this.file.name
         }
 
-      this.save.emit(user);
+      this.save.emit(value);
     })
   }
 

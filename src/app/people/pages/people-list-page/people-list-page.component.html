@@ -19,8 +19,10 @@
       *ngFor="let person of people"
       [person]="person"
       [isAdmin]="isAdmin$ | async"
+      [currentUser]="currentUser$ | async"
       (edit)="editPerson($event)"
-      (remove)="removePerson($event)">
+      (remove)="removePerson($event)"
+      (arrest)="arrestPerson($event)">
     </app-people-item>
   </section>
 </ng-container>

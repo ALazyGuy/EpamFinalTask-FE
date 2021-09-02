@@ -1,12 +1,12 @@
-<h1 mat-dialog-title>Confirmation</h1>
+<h1 mat-dialog-title translate>Confirmation</h1>
 <mat-dialog-content>
-  Do you really want to delete this person?
+  {{ (data?.text || 'Do you really want to delete this person?') | translate }}
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-button color="primary" [mat-dialog-close]="true">
-    Yes
+  <button mat-button mat-button color="primary" [mat-dialog-close]="true" >
+    {{ 'Yes' | translate }}
   </button>
-  <button mat-button mat-button color="warn" mat-dialog-close>
-    No
+  <button mat-button mat-button color="warn" mat-dialog-close translate>
+    {{ 'No' | translate }}
   </button>
 </mat-dialog-actions>

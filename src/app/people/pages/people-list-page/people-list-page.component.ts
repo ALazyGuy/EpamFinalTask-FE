@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { PeopleState, getPeople } from '../../reducers/people.reducer';
-import { LoadPeopleAction, RemovePersonAction } from '../../actions/people.actions';
+import { ArrestPersonAction, LoadPeopleAction, RemovePersonAction } from '../../actions/people.actions';
 import { FormControl } from '@angular/forms';
-import { isAdmin } from "../../../auth/reducers/auth.reducer";
+import { currentUser, isAdmin } from "../../../auth/reducers/auth.reducer";
 
 @Component({
   selector: 'app-people-list',
@@ -18,6 +18,7 @@ import { isAdmin } from "../../../auth/reducers/auth.reducer";
 })
 export class PeopleListPageComponent implements OnInit {
   people$ = this.store.pipe(select(getPeople));
+  currentUser$ = this.store.pipe(select(currentUser));
   isAdmin$ = this.store.pipe(select(isAdmin));
 
   searchInput = new FormControl();
@@ -56,6 +57,19 @@ export class PeopleListPageComponent implements OnInit {
     }).afterClosed().subscribe((isConfirmed) => {
       if (isConfirmed) {
         this.store.dispatch(new RemovePersonAction(person));
+      }
+    });
+  }
+
+  arrestPerson(person: Person) {
+    this.dialog.open(ConfirmationDialogComponent, {
+      width: '500px',
+      data: {
+        text: 'Are you sure want to arrest this person?'
+      }
+    }).afterClosed().subscribe((isConfirmed) => {
+      if (isConfirmed) {
+        this.store.dispatch(new ArrestPersonAction(person));
       }
     });
   }

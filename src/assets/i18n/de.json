@@ -38,5 +38,11 @@
   "Choose image": "Bild auswählen",
   "Please enter cash": "Bitte Bargeld eingeben",
   "Cash value is invalid": "Barwert ist ungültig",
-  "Arrested": "Verhaftet"
+  "Arrested": "Verhaftet",
+  "Confirmation": "Bestätigung",
+  "Do you really want to delete this person?": "Möchten Sie diese Person wirklich löschen?",
+  "Are you sure want to arrest this person?": "Möchten Sie diese Person wirklich verhaften?",
+  "Yes": "Jawohl",
+  "No": "Nein",
+  "Arrest": "Festnahme"
 }

@@ -4,4 +4,5 @@ export interface Person {
   cash: number;
   status: boolean;
   photoName: string;
+  authorId?: number;
 }

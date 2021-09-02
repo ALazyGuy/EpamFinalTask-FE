@@ -6,6 +6,7 @@ export const SET_PEOPLE_ACTION = '[People] Set People';
 export const CREATE_PERSON_ACTION = '[People] Create Person';
 export const EDIT_PERSON_ACTION = '[People] Edit Person';
 export const REMOVE_PERSON_ACTION = '[People] Remove Person';
+export const ARREST_PERSON_ACTION = '[People] Arrest Person';
 
 export class LoadPeopleAction implements Action {
   public readonly type = LOAD_PEOPLE_ACTION;
@@ -37,9 +38,16 @@ export class RemovePersonAction implements Action {
   constructor(public payload: Person) {}
 }
 
+export class ArrestPersonAction implements Action {
+  public readonly type = ARREST_PERSON_ACTION;
+
+  constructor(public payload: Person) {}
+}
+
 export type PeopleAction =
   | LoadPeopleAction
   | SetPeopleAction
   | CreatePersonAction
   | EditPersonAction
-  | RemovePersonAction;
+  | RemovePersonAction
+  | ArrestPersonAction;

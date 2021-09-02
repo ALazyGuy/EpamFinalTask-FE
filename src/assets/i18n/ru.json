@@ -38,5 +38,11 @@
   "Choose image": "Выберете изображение",
   "Please enter cash": "Введите вознаграждение",
   "Cash value is invalid": "Значение вознаграждение неверное",
-  "Arrested": "Арестован"
+  "Arrested": "Арестован",
+  "Confirmation": "Подтверждение",
+  "Do you really want to delete this person?": "Вы действительно хотите удалить этого человека?",
+  "Are you sure want to arrest this person?": "Вы уверены, что хотите арестовать этого человека?",
+  "Yes": "Да",
+  "No": "Нет",
+  "Arrest": "Арестовать"
 }

@@ -17,7 +17,7 @@
     </main>
   </section>
   <aside class="people-item__actions">
-    <button class="people-item__actions__edit" mat-button color="primary" (click)="onEdit()">
+    <button class="people-item__actions__edit" *ngIf="person.authorId == currentUser?.id || isAdmin" mat-button color="primary" (click)="onEdit()">
       <mat-icon>edit</mat-icon>
       <span translate>Edit</span>
     </button>
@@ -25,5 +25,9 @@
       <mat-icon>remove</mat-icon>
       <span translate>Delete</span>
     </button>
+    <button *ngIf="!person.status && (person.authorId !== currentUser?.id || isAdmin)" class="people-item__actions" mat-button color="warn" (click)="onArrest()">
+      <span translate>Arrest</span>
+    </button>
+
   </aside>
 </mat-card>

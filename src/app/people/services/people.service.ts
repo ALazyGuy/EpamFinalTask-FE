@@ -35,11 +35,15 @@ export class PeopleService {
   }
 
   updateItem(person: Person): Observable<Person> {
-    return this.http.put<Person>(`${this.PEOPLE_URL}/found`, person, {params: new HttpParams({fromString: `id=${person.id}`})});
+    return this.http.put<Person>(`${this.PEOPLE_URL}/edit`, person);
   }
 
   removeItem(person: Person): Observable<any> {
     return this.http.delete(`${this.PEOPLE_URL}/remove`, {params: new HttpParams({fromString: `id=${person.id}`})});
+  }
+
+  arrest(person: Person): Observable<any> {
+    return this.http.put(`${this.PEOPLE_URL}/found`, {}, {params: new HttpParams({fromString: `id=${person.id}`})})
   }
 
   private getAll(): Observable<Person[]> {
